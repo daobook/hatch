@@ -85,14 +85,12 @@ class BuilderInterface(object):
 
         if not versions:
             versions = self.config.versions
-        else:
-            unknown_versions = set(versions) - set(version_api)
-            if unknown_versions:
-                raise ValueError(
-                    'Unknown versions for target `{}`: {}'.format(
-                        self.PLUGIN_NAME, ', '.join(map(str, sorted(unknown_versions)))
-                    )
+        elif unknown_versions := set(versions) - set(version_api):
+            raise ValueError(
+                'Unknown versions for target `{}`: {}'.format(
+                    self.PLUGIN_NAME, ', '.join(map(str, sorted(unknown_versions)))
                 )
+            )
 
         if hooks_only is None:
             hooks_only = env_var_enabled(BuildEnvVars.HOOKS_ONLY)

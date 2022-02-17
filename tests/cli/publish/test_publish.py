@@ -59,11 +59,12 @@ def remove_metadata_field(field: str, metadata_file_contents: str):
     lines = metadata_file_contents.splitlines(True)
 
     field_marker = f'{field}: '
-    indices_to_remove = []
+    indices_to_remove = [
+        i
+        for i, line in enumerate(lines)
+        if line.lower().startswith(field_marker)
+    ]
 
-    for i, line in enumerate(lines):
-        if line.lower().startswith(field_marker):
-            indices_to_remove.append(i)
 
     for i, index in enumerate(indices_to_remove):
         del lines[index - i]
@@ -73,12 +74,11 @@ def remove_metadata_field(field: str, metadata_file_contents: str):
 
 def timestamp_to_version(timestamp):
     major, minor = str(timestamp).split('.')
-    if minor.startswith('0'):
-        normalized_minor = str(int(minor))
-        padding = '.'.join('0' for _ in range(len(minor) - len(normalized_minor)))
-        return f'{major}.{padding}.{normalized_minor}'
-    else:
+    if not minor.startswith('0'):
         return f'{major}.{minor}'
+    normalized_minor = str(int(minor))
+    padding = '.'.join('0' for _ in range(len(minor) - len(normalized_minor)))
+    return f'{major}.{padding}.{normalized_minor}'
 
 
 def test_timestamp_to_version():

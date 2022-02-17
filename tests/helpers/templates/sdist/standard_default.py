@@ -8,9 +8,10 @@ from .utils import DEFAULT_METADATA_VERSION
 def get_files(**kwargs):
     relative_root = kwargs.get('relative_root', '')
 
-    files = []
-    for f in get_template_files(**kwargs):
-        files.append(File(Path(relative_root, f.path), f.contents))
+    files = [
+        File(Path(relative_root, f.path), f.contents)
+        for f in get_template_files(**kwargs)
+    ]
 
     files.append(
         File(

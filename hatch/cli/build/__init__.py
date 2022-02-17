@@ -62,11 +62,7 @@ def build(app, location, targets, hooks_only, no_hooks, ext, clean, clean_hooks_
     else:
         app.abort('Field `build-system.requires` must specify `hatchling` as a requirement')
 
-    if location:
-        path = str(Path(location).resolve())
-    else:
-        path = None
-
+    path = str(Path(location).resolve()) if location else None
     if ext:
         hooks_only = True
         targets = ('wheel',)

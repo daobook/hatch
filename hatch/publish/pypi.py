@@ -48,11 +48,7 @@ class PyPIPublisher(PublisherInterface):
 
             artifacts = [DEFAULT_BUILD_DIRECTORY]
 
-        if 'repo' in options:
-            repo = options['repo']
-        else:
-            repo = self.plugin_config.get('repo', 'main')
-
+        repo = options.get('repo', self.plugin_config.get('repo', 'main'))
         if repo in self.repos:
             repo = self.repos[repo]
 
@@ -228,7 +224,10 @@ def get_wheel_form_data(app, artifact):
     # cryptography-3.4.7-pp37-pypy37_pp73-manylinux2014_x86_64.whl -> pp37
     # hatchling-1rc1-py2.py3-none-any.whl -> py2.py3
     tag_component = '-'.join(artifact.stem.split('-')[-3:])
-    data['pyversion'] = '.'.join(sorted(set(tag.interpreter for tag in parse_tag(tag_component))))
+    data['pyversion'] = '.'.join(
+        sorted({tag.interpreter for tag in parse_tag(tag_component)})
+    )
+
 
     return data
 
@@ -242,8 +241,6 @@ def get_sdist_form_data(app, artifact):
             if tar_info.isfile():
                 pkg_info_dir_parts.extend(tar_info.name.split('/')[:-1])
                 break
-            else:  # no cov
-                pass
         else:  # no cov
             app.abort(f'Could not find any files in sdist: {artifact}')
 
@@ -327,15 +324,11 @@ class CachedUserFile:
     @property
     def data(self):
         if self._data is None:
-            if not self.path.is_file():
-                self._data = {}
+            if self.path.is_file() and (contents := self.path.read_text()):
+                import json
+
+                self._data = json.loads(contents)
+
             else:
-                contents = self.path.read_text()
-                if not contents:  # no cov
-                    self._data = {}
-                else:
-                    import json
-
-                    self._data = json.loads(contents)
-
+                self._data = {}
         return self._data

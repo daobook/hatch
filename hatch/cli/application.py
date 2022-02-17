@@ -97,14 +97,10 @@ class Application(Terminal):
     def get_env_directory(self, environment_type):
         directories = self.config.dirs.env
 
-        if environment_type in directories:
-            path = expanduser(expandvars(directories[environment_type]))
-            if isabs(path):
-                return Path(path)
-            else:
-                return self.project.location / path
-        else:
+        if environment_type not in directories:
             return self.data_dir / 'env' / environment_type
+        path = expanduser(expandvars(directories[environment_type]))
+        return Path(path) if isabs(path) else self.project.location / path
 
     def abort(self, text='', code=1, **kwargs):
         if text:

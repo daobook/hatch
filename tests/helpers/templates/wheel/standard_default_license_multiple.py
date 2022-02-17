@@ -22,27 +22,27 @@ def get_files(**kwargs):
 
         files.append(f)
 
-    files.append(File(Path(metadata_directory, 'entry_points.txt'), ''))
-    files.append(
-        File(
-            Path(metadata_directory, 'WHEEL'),
-            f"""\
+    files.extend(
+        (
+            File(Path(metadata_directory, 'entry_points.txt'), ''),
+            File(
+                Path(metadata_directory, 'WHEEL'),
+                f"""\
 Wheel-Version: 1.0
 Generator: hatch {__version__}
 Root-Is-Purelib: true
 Tag: py2-none-any
 Tag: py3-none-any
 """,
-        )
-    )
-    files.append(
-        File(
-            Path(metadata_directory, 'METADATA'),
-            f"""\
+            ),
+            File(
+                Path(metadata_directory, 'METADATA'),
+                f"""\
 Metadata-Version: {DEFAULT_METADATA_VERSION}
 Name: {kwargs['project_name_normalized']}
 Version: 0.0.1
 """,
+            ),
         )
     )
 

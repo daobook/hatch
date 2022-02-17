@@ -8,7 +8,7 @@ def test_standard(hatch, config_file):
     assert result.output == 'Settings were successfully restored.\n'
 
     config_file.load()
-    assert config_file.model.project == ''
+    assert not config_file.model.project
 
 
 def test_allow_invalid_config(hatch, config_file, helpers):

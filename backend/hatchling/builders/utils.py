@@ -25,10 +25,7 @@ def get_known_python_major_versions():
 
 
 def normalize_archive_path(path):
-    if os.sep != '/':
-        return path.replace(os.sep, '/')
-
-    return path
+    return path.replace(os.sep, '/') if os.sep != '/' else path
 
 
 def format_file_hash(digest):

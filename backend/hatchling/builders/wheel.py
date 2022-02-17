@@ -163,8 +163,9 @@ class WheelBuilderConfig(BuilderConfig):
         else:
             from glob import glob
 
-            possible_namespace_packages = glob(os.path.join(self.root, '*', project_name, '__init__.py'))
-            if possible_namespace_packages:
+            if possible_namespace_packages := glob(
+                os.path.join(self.root, '*', project_name, '__init__.py')
+            ):
                 relative_path = os.path.relpath(possible_namespace_packages[0], self.root)
                 namespace = relative_path.split(os.path.sep)[0]
                 self.__include.append('/{}'.format(namespace))
@@ -291,9 +292,6 @@ class WheelBuilder(BuilderInterface):
             for dependency in editable_project.dependencies():
                 if dependency == 'editables':
                     dependency += '~={}'.format(EDITABLES_MINIMUM_VERSION)
-                else:  # no cov
-                    pass
-
                 extra_dependencies.append(dependency)
 
             self.write_metadata(archive, records, build_data, extra_dependencies=extra_dependencies)
@@ -326,9 +324,6 @@ class WheelBuilder(BuilderInterface):
                 for dependency in editable_project.dependencies():
                     if dependency == 'editables':
                         dependency += '~={}'.format(EDITABLES_MINIMUM_VERSION)
-                    else:  # no cov
-                        pass
-
                     extra_dependencies.append(dependency)
 
                 self.write_metadata(archive, records, build_data, extra_dependencies=extra_dependencies)
@@ -348,9 +343,10 @@ class WheelBuilder(BuilderInterface):
 
             metadata_directory = '{}.dist-info'.format(self.project_id)
             with WheelArchive(metadata_directory, self.config.reproducible) as archive, closing(StringIO()) as records:
-                directories = []
-                for relative_directory in self.config.dev_mode_dirs:
-                    directories.append(os.path.normpath(os.path.join(self.root, relative_directory)))
+                directories = [
+                    os.path.normpath(os.path.join(self.root, relative_directory))
+                    for relative_directory in self.config.dev_mode_dirs
+                ]
 
                 record = archive.write_file(
                     '{}.pth'.format(self.metadata.core.name.replace('-', '_')), '\n'.join(directories)

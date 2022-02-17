@@ -42,9 +42,8 @@ class Platform:
                 new_command = [self._shutil.which(executable) or executable]
                 new_command.extend(command[1:])
                 return new_command
-        else:
-            if not shell and isinstance(command, str):
-                return self._shlex.split(command)
+        elif not shell and isinstance(command, str):
+            return self._shlex.split(command)
 
         return command
 
@@ -184,11 +183,10 @@ class Platform:
         Run the given command and exit with its exit code. On non-Windows systems, this uses the standard library's
         [os.execvp](https://docs.python.org/3/library/os.html#os.execvp).
         """
-        if self.windows:
-            process = self.run_command(command)
-            self.exit_with_code(process.returncode)
-        else:
+        if not self.windows:
             return os.execvp(command[0], command)
+        process = self.run_command(command)
+        self.exit_with_code(process.returncode)
 
     @property
     def name(self):

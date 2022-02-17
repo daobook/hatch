@@ -22,7 +22,7 @@ def apply_overrides(env_name, source, condition, condition_value, options, new_c
 
     for option, data in options.items():
         _, separator, option = option.rpartition('set-')
-        overwrite = True if separator else False
+        overwrite = bool(separator)
 
         # Prevent manipulation of reserved options
         if option_types is not RESERVED_OPTIONS and option in RESERVED_OPTIONS:
@@ -125,12 +125,10 @@ def _apply_override_to_array(env_name, option, data, source, condition, conditio
                 f'must be a string or an inline table'
             )
 
-    if overwrite:
+    if overwrite or option not in new_config and new_array:
         new_config[option] = new_array
     elif option in new_config:
         new_config[option].extend(new_array)
-    elif new_array:
-        new_config[option] = new_array
 
 
 def _apply_override_to_string(env_name, option, data, source, condition, condition_value, new_config, overwrite):

@@ -88,8 +88,7 @@ class ProjectMetadata(object):
 
             metadata = CoreMetadata(self.root, core_metadata)
 
-            metadata_hooks = self.hatch.metadata_hooks
-            if metadata_hooks:
+            if metadata_hooks := self.hatch.metadata_hooks:
                 self._set_version(metadata)
                 core_metadata['version'] = self.version
 
@@ -275,19 +274,18 @@ class CoreMetadata(object):
         https://www.python.org/dev/peps/pep-0621/#version
         """
         if self._version is None:
-            if 'version' not in self.config:
-                if 'version' not in self.dynamic:
-                    raise ValueError(
-                        'Field `project.version` can only be resolved dynamically '
-                        'if `version` is in field `project.dynamic`'
-                    )
-            else:
+            if 'version' in self.config:
                 version = self.config['version']
                 if not isinstance(version, str):
                     raise TypeError('Field `project.version` must be a string')
 
                 self._version = version
 
+            elif 'version' not in self.dynamic:
+                raise ValueError(
+                    'Field `project.version` can only be resolved dynamically '
+                    'if `version` is in field `project.dynamic`'
+                )
         return self._version
 
     @property
@@ -530,9 +528,12 @@ class CoreMetadata(object):
                         )
 
                     full_pattern = os.path.normpath(os.path.join(self.root, pattern))
-                    for path in glob(full_pattern):
-                        if os.path.isfile(path):
-                            license_files.append(os.path.relpath(path, self.root).replace('\\', '/'))
+                    license_files.extend(
+                        os.path.relpath(path, self.root).replace('\\', '/')
+                        for path in glob(full_pattern)
+                        if os.path.isfile(path)
+                    )
+
             else:
                 raise ValueError(
                     'Must specify either `paths` or `globs` in the `project.license-files` table if defined'

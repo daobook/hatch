@@ -11,34 +11,35 @@ def get_files(**kwargs):
     metadata_directory = kwargs.get('metadata_directory', '')
     package_paths = kwargs.get('package_paths', [])
 
-    files = []
-    for f in get_template_files(**kwargs):
-        if str(f.path) == 'LICENSE.txt':
-            files.append(File(Path(metadata_directory, 'license_files', f.path), f.contents))
+    files = [
+        File(Path(metadata_directory, 'license_files', f.path), f.contents)
+        for f in get_template_files(**kwargs)
+        if str(f.path) == 'LICENSE.txt'
+    ]
 
     pth_file_name = f"{kwargs['package_name']}.pth"
-    files.append(File(Path(pth_file_name), '\n'.join(package_paths)))
-    files.append(File(Path(metadata_directory, 'entry_points.txt'), ''))
-    files.append(
-        File(
-            Path(metadata_directory, 'WHEEL'),
-            f"""\
+    files.extend(
+        (
+            File(Path(pth_file_name), '\n'.join(package_paths)),
+            File(Path(metadata_directory, 'entry_points.txt'), ''),
+            File(
+                Path(metadata_directory, 'WHEEL'),
+                f"""\
 Wheel-Version: 1.0
 Generator: hatch {__version__}
 Root-Is-Purelib: true
 Tag: py2-none-any
 Tag: py3-none-any
 """,
-        )
-    )
-    files.append(
-        File(
-            Path(metadata_directory, 'METADATA'),
-            f"""\
+            ),
+            File(
+                Path(metadata_directory, 'METADATA'),
+                f"""\
 Metadata-Version: {DEFAULT_METADATA_VERSION}
 Name: {kwargs['project_name_normalized']}
 Version: 0.0.1
 """,
+            ),
         )
     )
 

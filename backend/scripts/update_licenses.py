@@ -22,8 +22,7 @@ def download_data(url):
             continue
         else:
             return json.loads(response.content.decode('utf-8'))
-    else:
-        raise Exception('Download failed')
+    raise Exception('Download failed')
 
 
 def main():

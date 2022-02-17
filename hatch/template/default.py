@@ -76,9 +76,7 @@ class DefaultTemplate(TemplateInterface):
     def get_files(self, config):
         files = list(find_template_files(files_default))
 
-        # Add any licenses
-        license_data = config['license_data']
-        if license_data:
+        if license_data := config['license_data']:
             if len(license_data) == 1:
                 license_id, text = list(license_data.items())[0]
                 license_text = get_license_text(config, license_id, text, self.creation_time)

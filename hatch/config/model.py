@@ -126,12 +126,10 @@ class RootConfig(LazilyParsedConfig):
                 if not isinstance(dirs, dict):
                     self.raise_error('must be a table')
 
-                self._field_dirs = DirsConfig(dirs, ('dirs',))
             else:
                 dirs = {}
                 self.raw_data['dirs'] = dirs
-                self._field_dirs = DirsConfig(dirs, ('dirs',))
-
+            self._field_dirs = DirsConfig(dirs, ('dirs',))
         return self._field_dirs
 
     @dirs.setter
@@ -198,12 +196,10 @@ class RootConfig(LazilyParsedConfig):
                 if not isinstance(template, dict):
                     self.raise_error('must be a table')
 
-                self._field_template = TemplateConfig(template, ('template',))
             else:
                 template = {}
                 self.raw_data['template'] = template
-                self._field_template = TemplateConfig(template, ('template',))
-
+            self._field_template = TemplateConfig(template, ('template',))
         return self._field_template
 
     @template.setter
@@ -219,12 +215,10 @@ class RootConfig(LazilyParsedConfig):
                 if not isinstance(terminal, dict):
                     self.raise_error('must be a table')
 
-                self._field_terminal = TerminalConfig(terminal, ('terminal',))
             else:
                 terminal = {}
                 self.raw_data['terminal'] = terminal
-                self._field_terminal = TerminalConfig(terminal, ('terminal',))
-
+            self._field_terminal = TerminalConfig(terminal, ('terminal',))
         return self._field_terminal
 
     @terminal.setter
@@ -496,12 +490,10 @@ class TemplateConfig(LazilyParsedConfig):
                 if not isinstance(licenses, dict):
                     self.raise_error('must be a table')
 
-                self._field_licenses = LicensesConfig(licenses, self.steps + ('licenses',))
             else:
                 licenses = {}
                 self.raw_data['licenses'] = licenses
-                self._field_licenses = LicensesConfig(licenses, self.steps + ('licenses',))
-
+            self._field_licenses = LicensesConfig(licenses, self.steps + ('licenses',))
         return self._field_licenses
 
     @licenses.setter
@@ -599,12 +591,10 @@ class TerminalConfig(LazilyParsedConfig):
                 if not isinstance(styles, dict):
                     self.raise_error('must be a table')
 
-                self._field_styles = StylesConfig(styles, self.steps + ('styles',))
             else:
                 styles = {}
                 self.raw_data['styles'] = styles
-                self._field_styles = StylesConfig(styles, self.steps + ('styles',))
-
+            self._field_styles = StylesConfig(styles, self.steps + ('styles',))
         return self._field_styles
 
     @styles.setter

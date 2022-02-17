@@ -118,14 +118,13 @@ class VirtualEnvironment(EnvironmentInterface):
     @property
     def parent_python(self):
         if self._parent_python is None:
-            python_choice = self.config.get('python')
-            if not python_choice:
-                python_executable = self.system_python
-            else:
+            if python_choice := self.config.get('python'):
                 from virtualenv.discovery.builtin import get_interpreter
 
                 python_executable = get_interpreter(python_choice, ()).executable
 
+            else:
+                python_executable = self.system_python
             self._parent_python = python_executable
 
         return self._parent_python

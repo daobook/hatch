@@ -114,10 +114,10 @@ class BuilderConfig(object):
 
                 all_include_patterns.append(include_pattern)
 
-            for relative_path in self.packages:
-                # Matching only at the root requires a forward slash, back slashes do not work. As such,
-                # normalize to forward slashes for consistency.
-                all_include_patterns.append('/{}/'.format(relative_path.replace(os.path.sep, '/')))
+            all_include_patterns.extend(
+                '/{}/'.format(relative_path.replace(os.path.sep, '/'))
+                for relative_path in self.packages
+            )
 
             if all_include_patterns:
                 self.__include_spec = pathspec.PathSpec.from_lines(
@@ -363,14 +363,14 @@ class BuilderConfig(object):
                 default_versions = self.__builder.get_default_versions()
                 for version in default_versions:
                     all_versions[version] = None
-            else:
-                unknown_versions = set(all_versions) - set(self.__builder.get_version_api())
-                if unknown_versions:
-                    raise ValueError(
-                        'Unknown versions in field `tool.hatch.build.targets.{}.versions`: {}'.format(
-                            self.plugin_name, ', '.join(map(str, sorted(unknown_versions)))
-                        )
+            elif unknown_versions := set(all_versions) - set(
+                self.__builder.get_version_api()
+            ):
+                raise ValueError(
+                    'Unknown versions in field `tool.hatch.build.targets.{}.versions`: {}'.format(
+                        self.plugin_name, ', '.join(map(str, sorted(unknown_versions)))
                     )
+                )
 
             self.__versions = list(all_versions)
 
@@ -523,9 +523,7 @@ class BuilderConfig(object):
     @contextmanager
     def set_build_data(self, build_data):
         try:
-            # Include anything the hooks indicate
-            build_artifacts = build_data['artifacts']
-            if build_artifacts:
+            if build_artifacts := build_data['artifacts']:
                 self.build_artifact_spec = pathspec.PathSpec.from_lines(
                     pathspec.patterns.GitWildMatchPattern, build_artifacts
                 )

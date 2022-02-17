@@ -57,8 +57,7 @@ class EnvVars(dict):
 
 
 def python_version_supported(project_config):
-    requires_python = project_config['project'].get('requires-python', '')
-    if requires_python:
+    if requires_python := project_config['project'].get('requires-python', ''):
         python_constraint = Requirement('requires_python{}'.format(requires_python)).specifier
         if not python_constraint.contains(str('.'.join(map(str, sys.version_info[:2])))):
             return False
@@ -210,8 +209,7 @@ def main():
                     for statement in test_data['statements']:
                         subprocess.check_call([which('python'), '-c', statement])
 
-                    scripts = project_config['project'].get('scripts', {})
-                    if scripts:
+                    if scripts := project_config['project'].get('scripts', {}):
                         print('--> Testing scripts...')
                         for script in scripts:
                             if not which(script):

@@ -60,8 +60,7 @@ class Project:
             return None
 
         if project in config.projects:
-            location = config.projects[project].location
-            if location:
+            if location := config.projects[project].location:
                 return cls(Path(location).resolve(), name=project)
         else:
             for project_dir in config.dirs.project:

@@ -44,8 +44,7 @@ def dependency_in_sync(requirement, environment, installed_distributions):
     if distribution is None:
         return False
 
-    extras = requirement.extras
-    if extras:
+    if extras := requirement.extras:
         transitive_requirements = distribution.metadata.get_all('Requires-Dist', [])
         if not transitive_requirements:
             return False
