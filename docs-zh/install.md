@@ -1,21 +1,21 @@
-# Installation
+# 安装
 
 -----
 
 ## pip
 
-Hatch is available on PyPI and can be installed with [pip](https://pip.pypa.io).
+Hatch 可在 PyPI 上使用，并且可以通过 [pip](https://pip.pypa.io) 安装。
 
 ```
 pip install hatch
 ```
 
 !!! warning
-    This method modifies the Python environment in which you choose to install.
+    此方法修改您选择安装的 Python 环境。
 
 ## pipx
 
-[pipx](https://github.com/pypa/pipx) allows for the global installation of Python applications in isolated environments.
+[pipx](https://github.com/pypa/pipx) 允许在隔离的环境中全局安装 Python 应用程序。
 
 ```
 pipx install hatch
@@ -23,7 +23,7 @@ pipx install hatch
 
 ## Homebrew
 
-See the [formula](https://formulae.brew.sh/formula/hatch) for more details.
+阅读 [formula](https://formulae.brew.sh/formula/hatch) 了解更多细节。
 
 ```
 brew install hatch
@@ -31,13 +31,13 @@ brew install hatch
 
 ## Conda
 
-See the [feedstock](https://github.com/conda-forge/hatch-feedstock) for more details.
+阅读 [feedstock](https://github.com/conda-forge/hatch-feedstock) 了解更多细节。
 
 ```
 conda install -c conda-forge hatch
 ```
 
-or with [mamba](https://github.com/mamba-org/mamba):
+或者使用 [mamba](https://github.com/mamba-org/mamba)：
 
 ```
 mamba install hatch
@@ -45,7 +45,7 @@ mamba install hatch
 
 ## MacPorts
 
-See the [port](https://ports.macports.org/port/hatch/) for more details.
+阅读 [port](https://ports.macports.org/port/hatch/) 了解更多细节。
 
 ```
 sudo port install hatch
@@ -65,7 +65,7 @@ sudo dnf install hatch
 xbps-install hatch
 ```
 
-## Build system availability
+## 构建系统的可用性
 
 Hatchling is Hatch's [build backend](config/build.md#build-system) which you will never need to install manually. See its [changelog](history.md#hatchling) for version information.
 
