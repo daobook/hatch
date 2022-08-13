@@ -7,7 +7,7 @@ repo_url: https://github.com/pypa/hatch
 edit_uri: blob/master/docs
 copyright: 'Copyright &copy; Ofek Lev 2017-present'
 
-docs_dir: docs
+docs_dir: docs-zh
 site_dir: site
 theme:
   name: material
