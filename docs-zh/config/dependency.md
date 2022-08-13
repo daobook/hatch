@@ -1,12 +1,12 @@
-# Dependency configuration
+# 项目依赖
 
 -----
 
-[Project dependencies](metadata.md#dependencies) are defined with [PEP 508][] strings using optional [PEP 440 version specifiers][].
+[项目依赖项](metadata.md#dependencies) 使用 [PEP 508][] 字符串定义的可选的 [PEP 440 version specifiers][] 。
 
-## Version specifiers
+## 版本说明符
 
-A version specifier consists of a series of version clauses, separated by commas. For example:
+版本说明符由一系列用逗号分隔的版本子句组成。例如：
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -21,7 +21,7 @@ A version specifier consists of a series of version clauses, separated by commas
     ]
     ```
 
-The comma is equivalent to a logical `AND` operator: a candidate version must match all given version clauses in order to match the specifier as a whole.
+逗号等价于逻辑的 `AND` 算子：候选版本必须匹配所有给定版本子句，以便从整体上匹配说明符。
 
 ### Operators
 
@@ -34,75 +34,77 @@ The comma is equivalent to a logical `AND` operator: a candidate version must ma
 | `<`, `>` | [Exclusive ordered comparison](#ordered-comparison) |
 | `===` | [Arbitrary equality](#arbitrary-equality) |
 
-### Version matching
+### 版本匹配
 
-A version matching clause includes the version matching operator `==` and a version identifier.
+版本匹配子句包括版本匹配算子 `==`  和版本标识符。
 
-By default, the version matching operator is based on a strict equality comparison: the specified version must be exactly the same as the requested version.
+默认情况下，版本匹配算子基于严格的相等比较：指定的版本必须与请求的版本完全相同。
 
 | Clause | Allowed versions |
 | --- | --- |
 | `==1` | `1.0.0` |
 | `==1.2` | `1.2.0` |
 
-Prefix matching may be requested instead of strict comparison, by appending a trailing `.*` to the version identifier in the version matching clause. This means that additional trailing segments will be ignored when determining whether or not a version identifier matches the clause.
+通过在版本匹配子句的版本标识符后面附加一个后缀 `.*`，可以请求前缀匹配而不是严格的比较。这意味着在确定版本标识符是否匹配子句时，将忽略附加的尾随段。
 
 | Clause | Allowed versions |
 | --- | --- |
 | `==1.*` | `>=1.0.0, <2.0.0` |
 | `==1.2.*` | `>=1.2.0, <1.3.0` |
 
-### Compatible release
+### 兼容发布
 
-A compatible release clause consists of the compatible release operator `~=` and a version identifier. It matches any candidate version that is expected to be compatible with the specified version.
+兼容发布子句由兼容发布算子 `~=` 和版本标识符组成。它匹配期望与指定版本兼容的任何候选版本。
 
-For a given release identifier `V.N`, the compatible release clause is approximately equivalent to the following pair of comparison clauses:
+对于给定的版本标识符 `V.N`，兼容版本子句大致等价于以下两个比较子句：
 
 ```
 >= V.N, == V.*
 ```
 
-This operator cannot be used with a single segment version number such as `~=1`.
+此算子不能与单语义版本号一起使用，例如 `~=1`。
 
 | Clause | Allowed versions |
 | --- | --- |
 | `~=1.2` | `>=1.2.0, <2.0.0` |
 | `~=1.2.3` | `>=1.2.3, <1.3.0` |
 
-### Version exclusion
+### 版本排除
+
+版本排除子句包含版本排除算子 `!=` 和版本标识符。
+
+所允许的版本标识符和比较语义与 [版本匹配](#version-matching) 算子的版本标识符和比较语义相同，只是任何匹配的意义是相反的。
 
 A version exclusion clause includes the version exclusion operator `!=` and a version identifier.
 
-The allowed version identifiers and comparison semantics are the same as those of the [Version matching](#version-matching) operator, except that the sense of any match is inverted.
+### 有序比较
 
-### Ordered comparison
+包含性比较允许子句的版本标识符部分，而独占性比较则不允许。例如，`>=1.2` 允许版本为  `1.2.0`，而  `>1.2` 则不允许。
 
-Inclusive comparisons allow for the version identifier part of clauses whereas exclusive comparisons do not. For example, `>=1.2` allows for version `1.2.0` while `>1.2` does not.
+与包含式顺序比较 `<=` 和 `>=` 不同，排他式顺序比较 `<` 和 `>` 特别地排除了指定版本的预发布版本、发布后版本和本地版本。
 
-Unlike the inclusive ordered comparisons `<=` and `>=`, the exclusive ordered comparisons `<` and `>` specifically exclude pre-releases, post-releases, and local versions of the specified version.
+### 任意相等
 
-### Arbitrary equality
+尽管非常不鼓励，但任意相等比较允许不带任何版本语义的简单字符串匹配，例如 `===foobar`。
 
-Though heavily discouraged, arbitrary equality comparisons allow for simple string matching without any version semantics, for example `===foobar`.
+## 环境标志
 
-## Environment markers
+[环境标志](https://peps.python.org/pep-0508/#environment-markers) 允许只在满足某些条件时安装依赖项。
 
-[Environment markers](https://peps.python.org/pep-0508/#environment-markers) allow for dependencies to only be installed when certain conditions are met.
-
-For example, if you need to install the latest version of `cryptography` that is available for a given Python major version you could define the following:
+例如，如果你需要安装 `cryptography` 的最新版本，该版本可用于给定的 Python 主版本，你可以定义如下：
 
 ```
 cryptography==3.3.2; python_version < "3"
 cryptography>=35.0; python_version > "3"
 ```
 
-Alternatively, if you only need it on Python 3 when running on Windows you could do:
+或者，如果你只需要在 Python 3 上运行它在 Windows 上，你可以这样做：
 
 ```
 cryptography; python_version ~= "3.0" and platform_system == "Windows"
 ```
 
-The available environment markers are as follows.
+可用的环境标记如下。
 
 | Marker | Python equivalent | Examples |
 | --- | --- | --- |
@@ -118,9 +120,9 @@ The available environment markers are as follows.
 | `implementation_name` | `#!python import sys`<br>`sys.implementation.name` | <ul><li>cpython</li></ul> |
 | `implementation_version` | See [here](https://peps.python.org/pep-0508/#environment-markers) | <ul><li>2.7.18</li><li>3.11.0b1</li></ul> |
 
-## Features
+## 特性
 
-You can select groups of [optional dependencies](dependency.md#optional-dependencies) to install using the [extras](https://peps.python.org/pep-0508/#extras) syntax. For example, if a dependency named `foo` defined the following:
+可以使用[附加](https://peps.python.org/pep-0508/#extras)语法选择要安装的[可选依赖项](dependency.md#optional-dependencies)。例如，如果名为 `foo` 的依赖定义如下：
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -139,27 +141,27 @@ You can select groups of [optional dependencies](dependency.md#optional-dependen
     ]
     ```
 
-You can select the `cli` and `crypto` features like so:
+你可以像这样选择  `cli` 和 `crypto` 特性：
 
 ```
 foo[cli,crypto]==1.*
 ```
 
-Note that the features come immediately after the package name, before any [version specifiers](#version-specifiers).
+注意，特性紧接在包名之后，在任何 [版本说明符](#version-specifiers) 之前。
 
-## Direct references
+## 直接引用
 
-Instead of using normal [version specifiers](#version-specifiers) and fetching packages from an index like PyPI, you can define exact sources using [direct references](https://peps.python.org/pep-0440/#direct-references) with an explicit [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Syntax).
+与使用普通的[版本说明符](#version-specifiers)和从 PyPI 这样的索引获取包不同，您可以使用显式 [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Syntax) [直接引用](https://peps.python.org/pep-0440/#direct-references)  定义确切的源。
 
-Direct references are usually not meant to be used for dependencies of a published project but rather are used for defining [dependencies for an environment](environment/overview.md#dependencies).
+直接引用通常不用于已发布项目的依赖项，而是用于定义[环境的依赖项](environment/overview.md#dependencies)。
 
-All direct reference types are prefixed by the package name like:
+所有直接引用类型都以包名作为前缀：
 
 ```
 <NAME> @ <REFERENCE>
 ```
 
-### Version control systems
+### 版本控制系统
 
 Various version control systems (VCS) are [supported](#supported-vcs) as long as the associated executable is available along your `PATH`.
 

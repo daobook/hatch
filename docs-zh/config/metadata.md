@@ -1,13 +1,12 @@
-# Project metadata
+# 项目元数据
 
 -----
 
-Project metadata is stored in a `pyproject.toml` file located at the root of a project's tree
-and is based entirely on [PEP 621][].
+项目元数据存储在位于项目根目录的 `pyproject.toml` 文件中，完全基于 [PEP 621][]。
 
 ## Name (*required*) ## {: #name }
 
-The name of the project.
+项目的名称。
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -21,7 +20,7 @@ The name of the project.
 === ":octicons-file-code-16: pyproject.toml"
 
     === "Dynamic"
-        See the dedicated [versioning](../version.md) section.
+        请参阅 [versioning](../version.md) 部分。
 
         ```toml
         [project]
@@ -41,7 +40,7 @@ The name of the project.
 
 ## Description
 
-A brief summary of the project.
+项目概要。
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -53,12 +52,12 @@ A brief summary of the project.
 
 ## Readme
 
-The full description of the project.
+项目的完整描述。
 
 === ":octicons-file-code-16: pyproject.toml"
 
     === "Simple"
-        The file extension must be `.md`, `.rst`, or `.txt`.
+        文件扩展名必须为 `.md`、`.rst` 或 `.txt`。
 
         ```toml
         [project]
@@ -67,11 +66,10 @@ The full description of the project.
         ```
 
     === "Complex"
-        The `content-type` field must be set to `text/markdown`, `text/x-rst`, or `text/plain`.
+        `content-type` 字段必须设置为 `text/markdown`， `text/x-rst`，或 `text/plain`。
 
         === "File"
-            A `charset` field may also be set to instruct which encoding to
-            use for reading the file, defaulting to `utf-8`.
+            还可以设置 `charset` 字段来指示使用哪种编码来读取文件，默认为 `utf-8`。
 
             ```toml
             [project]
@@ -80,7 +78,7 @@ The full description of the project.
             ```
 
         === "Text"
-            The `content-type` field must be set to `text/markdown` or `text/x-rst`.
+            `content-type` 字段必须设置为 `text/markdown` 或 `text/x-rst`。
 
             ```toml
             [project]
@@ -89,11 +87,11 @@ The full description of the project.
             ```
 
 !!! note
-    If this is defined as a file, then it will always be included in [source distributions](../plugins/builder/sdist.md) for consistent builds.
+    如果它被定义为文件，那么它将总是包含在 [source distributions](../plugins/builder/sdist.md) 中以实现一致的构建。
 
-## Python support
+## Python 支持
 
-The Python version requirements of the project.
+项目的 Python 版本要求。
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -103,9 +101,9 @@ The Python version requirements of the project.
     requires-python = ">=3.8"
     ```
 
-## License
+## 许可证
 
-For more information, see [PEP 639][].
+更多信息参阅 [PEP 639][]。
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -135,12 +133,9 @@ For more information, see [PEP 639][].
             license-files = { globs = ["LICENSES/*"] }
             ```
 
-## Ownership
+## 所有权
 
-The people or organizations considered to be the `authors` or `maintainers` of the project.
-The exact meaning is open to interpretation; it may list the original or primary authors,
-current maintainers, or owners of the package. If the values are the same, prefer only the
-use of the `authors` field.
+被认为是项目的 `authors` 或 `maintainers` 的人或组织。确切的意思是可以解释的；它可以列出原作者或主要作者，当前的维护人员，或包的所有者。如果两个值相同，则选择使用 `authors` 字段。
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -157,7 +152,7 @@ use of the `authors` field.
 
 ## Keywords
 
-The keywords used to assist in the discovery of the project.
+用于协助发现项目的关键字。
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -171,7 +166,7 @@ The keywords used to assist in the discovery of the project.
 
 ## Classifiers
 
-The [trove classifiers](https://pypi.org/classifiers/) that apply to the project.
+应用于项目的 [trove 分类器](https://pypi.org/classifiers/)。
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -185,7 +180,7 @@ The [trove classifiers](https://pypi.org/classifiers/) that apply to the project
 
 ## URLs
 
-A table of URLs where the key is the URL label and the value is the URL itself.
+URL 表，其中键是 URL 标签，值是 URL 本身。
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -195,11 +190,11 @@ A table of URLs where the key is the URL label and the value is the URL itself.
     "Source code" = "..."
     ```
 
-## Dependencies
+## 依赖关系
 
-The format is based on [PEP 631][]. See the [dependency specification](dependency.md) section for more information.
+格式基于 [PEP 631][]。更多信息请参见 [dependency specification](dependency.md) 部分。
 
-Entries support [context formatting](context.md) and [disallow direct references](#allowing-direct-references) by default.
+条目支持 [context formatting](context.md)，默认情况下不允许[直接引用](#allowing-direct-references)。
 
 ### Required
 
@@ -229,12 +224,11 @@ Entries support [context formatting](context.md) and [disallow direct references
 
 ## Entry points
 
-[Entry points](https://packaging.python.org/specifications/entry-points/) are a mechanism for
-the project to advertise components it provides to be discovered and used by other code.
+[入口点](https://packaging.python.org/specifications/entry-points/) 是项目发布组件的一种机制，它提供组件供其他代码发现和使用。
 
 ### CLI
 
-After installing projects that define CLI scripts, each key will be available along your `PATH` as a command that will call its associated object.
+在安装了定义 CLI 脚本的项目后，每个键都可以通过调用其关联对象的命令沿着 `PATH` 使用。
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -243,7 +237,7 @@ After installing projects that define CLI scripts, each key will be available al
     cli-name = "pkg.subpkg:func"
     ```
 
-Using the above example, running `cli-name` would essentially execute the following Python script:
+使用上面的例子，运行 `cli-name` 实际上会执行以下 Python 脚本：
 
 ```python
 import sys
@@ -255,7 +249,7 @@ sys.exit(func())
 
 ### GUI
 
-GUI scripts are exactly the same as CLI scripts except on Windows, where they are handled specially so that they can be started without a console.
+GUI 脚本与 CLI 脚本完全相同，除了在 Windows 上，它们被专门处理，以便它们可以在没有控制台的情况下启动。
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -264,7 +258,7 @@ GUI scripts are exactly the same as CLI scripts except on Windows, where they ar
     gui-name = "pkg.subpkg:func"
     ```
 
-### Plugins
+### 插件
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -274,11 +268,11 @@ GUI scripts are exactly the same as CLI scripts except on Windows, where they ar
     plugin-name2 = "pkg.subpkg2:func"
     ```
 
-## Metadata options
+## 可选元数据
 
-### Allowing direct references
+### 允许直接引用
 
-By default, [dependencies](#dependencies) are not allowed to define [direct references](https://peps.python.org/pep-0440/#direct-references). To disable this check, set `allow-direct-references` to `true`:
+默认情况下，[dependencies](#dependencies) 不允许定义 [direct references](https://peps.python.org/pep-0440/#direct-references)。要禁用这个检查，设置 `allow-direct-references`  为 `true`：
 
 === ":octicons-file-code-16: pyproject.toml"
 

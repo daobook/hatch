@@ -1,10 +1,10 @@
-# Build configuration
+# 构建配置
 
 -----
 
-All build configuration is defined in the `tool.hatch.build` table.
+所有构建配置都在 `tool.hatch.build` 表中定义。
 
-[Build targets](#build-targets) are defined as sections within `tool.hatch.build.targets`:
+[Build targets](#build-targets) 被定义为 `tool.hatch.build.targets` 内的部分：
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -18,11 +18,11 @@ All build configuration is defined in the `tool.hatch.build` table.
     [build.targets.<TARGET_NAME>]
     ```
 
-For each build target you may override any of the defaults set in the top-level `tool.hatch.build` table.
+对于每个构建目标，您可以覆盖顶层 `tool.hatch.build` 表中设置的任何默认值。
 
-## Build system
+## 构建系统
 
-To be compatible with the broader [Python packaging ecosystem](../build.md#packaging-ecosystem), you must define the [build system](https://peps.python.org/pep-0517/#source-trees) as follows:
+要与更广泛的 [Python 打包生态系统](../build.md#packaging-ecosystem) 兼容，必须如下定义[构建系统](https://peps.python.org/pep-0517/#source-trees)：
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -32,15 +32,15 @@ To be compatible with the broader [Python packaging ecosystem](../build.md#packa
     build-backend = "hatchling.build"
     ```
 
-The version of `hatchling` defined here will be used to build all targets.
+这里定义的 `hatchling` 版本将用于构建所有目标。
 
-Hatchling is a [PEP 517][]/[PEP 660][] compatible build backend and is a dependency of Hatch itself.
+Hatchling 是  [PEP 517][]/[PEP 660][] 兼容的构建后端，是 Hatch 本身的一个依赖项。
 
-## File selection
+## 文件选择
 
 ### VCS
 
-By default, Hatch will respect the first `.gitignore` or `.hgignore` file found in your project's root directory or parent directories. Set `ignore-vcs` to `true` to disable this behavior:
+默认情况下，Hatch 会尊重项目根目录或父目录中的第一个 `.gitignore` 或 `.hgignore` 文件。设置 `ignore-vcs` 为 `true` 来禁用此行为：
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -57,13 +57,13 @@ By default, Hatch will respect the first `.gitignore` or `.hgignore` file found 
     ```
 
 !!! note
-    For `.hgignore` files only glob syntax is supported.
+    `.hgignore` 文件只支持 glob 语法。
 
-### Patterns
+### 模式
 
-You can set the `include` and `exclude` options to select exactly which files will be shipped in each build, with `exclude` taking precedence. Every entry represents a [Git-style glob pattern](https://git-scm.com/docs/gitignore#_pattern_format).
+您可以设置 `include` 和 `exclude` 选项，以准确地选择在每次构建中使用哪些文件，其中 `exclude` 优先。每个条目都代表 [git 风格的 glob 模式](https://git-scm.com/docs/gitignore#_pattern_format)。
 
-For example, the following configuration:
+例如，配置如下：
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -93,16 +93,13 @@ For example, the following configuration:
     ]
     ```
 
-will exclude every file with a `.json` extension, and will include everything under a `tests` directory located at the root and every file with a `.py` extension that is directly under a `pkg` directory located at the root except for `_compat.py`.
+将排除所有扩展名为 `.json` 的文件，并包括位于根目录下的 `tests/` 目录下的所有文件，以及位于根目录下的 `pkg` 目录下的所有扩展名为 `.py` 的文件(`_compat.py` 除外)。
 
 ### Artifacts
 
-If you want to include files that are [ignored by your VCS](#vcs), such as those that might be created by [build hooks](#build-hooks), you can use the `artifacts` option. This option is semantically equivalent to `include`.
+如果你想包含 [被VCS忽略](#vcs) 的文件，比如那些可能由 [build hooks](#build-hooks) 创建的文件，你可以使用 `artifacts` 选项。该选项在语义上等价于 `include`。
 
-Note that artifacts are not affected by the `exclude` option. Artifacts can
-be excluded by using more explicit paths or by using the `!` negation operator.
-When using the `!` operator, the negated pattern(s) must come after the more
-generic ones.
+注意，`artifacts` 不受 `exclude` 选项的影响。可以使用更显式的路径或使用 `!` 否定算子。当使用 `!` 算子，否定模式必须在更通用的模式之后。
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -126,11 +123,11 @@ generic ones.
     ]
     ```
 
-### Explicit selection
+### 显式选择
 
-#### Generic
+#### 通用
 
-You can use the `only-include` option to prevent directory traversal starting at the project root and only select specific relative paths to directories or files. Using this option ignores any defined [`include` patterns](#patterns).
+您可以使用 `only-include` 选项来防止从项目根开始的目录遍历，并且只选择目录或文件的特定相对路径。使用此选项会忽略任何已定义的 [`include` 模式](#patterns)。
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -148,9 +145,9 @@ You can use the `only-include` option to prevent directory traversal starting at
 
 #### Packages
 
-The `packages` option is semantically equivalent to `only-include` (which takes precedence) except that the shipped path will be collapsed to only include the final component.
+`packages` 选项在语义上等价于 `only-include` (优先级)，只是附带的路径将被折叠为只包含最终组件。
 
-So for example, if you want to ship a package `foo` that is stored in a directory `src` you would do:
+例如，如果你想要发送存储在 `src` 目录下的包 `foo`，你可以这样做：
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -168,9 +165,9 @@ So for example, if you want to ship a package `foo` that is stored in a director
 
 ### Forced inclusion
 
-The `force-include` option allows you to select specific files or directories from anywhere on the file system that should be included and map them to the desired relative distribution path.
+`force-include` 选项允许您从文件系统上任何位置选择应该包含的特定文件或目录，并将它们映射到所需的相对发布路径。
 
-For example, if there was a directory alongside the project root named `artifacts` containing a file named `lib.so` and a file named `lib.h` in your home directory, you could ship both files in a `pkg` directory with the following configuration:
+例如，如果在项目根目录中有名为 `artifacts` 的目录，其中包含名为 `lib.so` 的文件。并且，在你的主目录下有名为 `lib.h` 的文件，你可以使用以下配置将这两个文件放在 `pkg` 目录中：
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -189,21 +186,21 @@ For example, if there was a directory alongside the project root named `artifact
     ```
 
 !!! note
-    - Files must be mapped exactly to their desired paths, not to directories.
-    - The contents of directory sources are recursively included.
-    - To map directory contents directly to the root use `/` (a forward slash).
-    - Sources that do not exist are silently ignored.
+    - 文件必须精确地映射到它们所需的路径，而不是目录。
+    - 递归地包含目录源的内容。
+    - 要将目录内容直接映射到根目录，请使用 `/` (一个正斜杠)。
+    - 不存在的源将被静默地忽略。
 
 !!! warning
-    Files included using this option will overwrite any file path that was already included by other file selection options.
+    使用此选项包含的文件将覆盖其他文件选择选项已经包含的任何文件路径。
 
-### Default file selection
+### 默认文件选择
 
-If no file selection options are provided, then what gets included is determined by each [build target](#build-targets).
+如果没有提供文件选择选项，则包含的内容由每个 [build target](#build-targets) 决定。
 
-### Excluding files outside packages
+### 排除包之外的文件
 
-If you want to exclude non-[artifact](#artifacts) files that do not reside within a Python package, set `only-packages` to `true`:
+如果你想排除不存在于 Python 包中的非 [artifact](#artifacts) 文件，将 `only-packages` 设置为 `true`：
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -219,9 +216,9 @@ If you want to exclude non-[artifact](#artifacts) files that do not reside withi
     only-packages = true
     ```
 
-### Rewriting paths
+### 重写路径
 
-You can rewrite relative paths to directories with the `sources` option. For example, the following configuration:
+你可以用 `sources` 选项重写目录的相对路径。例如，配置如下：
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -237,9 +234,9 @@ You can rewrite relative paths to directories with the `sources` option. For exa
     "src/foo" = "bar"
     ```
 
-would distribute the file `src/foo/file.ext` as `bar/file.ext`.
+将分发文件 `src/foo/file.ext` 作为 `bar/file.ext`。
 
-If you want to remove path prefixes entirely, rather than setting each to an empty string, you can define `sources` as an array:
+如果你想完全删除路径前缀，而不是将每个前缀都设置为空字符串，你可以将 `sources` 定义为数组：
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -255,7 +252,7 @@ If you want to remove path prefixes entirely, rather than setting each to an emp
     sources = ["src"]
     ```
 
-The [packages](#packages) option itself relies on sources. Defining `#!toml packages = ["src/foo"]` for the `wheel` target is equivalent to the following:
+[packages](#packages) 选项本身依赖于 sources。为 `wheel` 目标定义 `#!toml packages = ["src/foo"]` 等价如下：
 
 === ":octicons-file-code-16: pyproject.toml"
 
