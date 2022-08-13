@@ -1,147 +1,232 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/build/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/build/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/environment/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/environment/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/install/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/history/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/intro/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/install/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/next-steps/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/intro/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/publish/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/next-steps/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/version/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/publish/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/cli/about/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/users/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/cli/reference/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/version/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/config/build/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/cli/about/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/config/dependency/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/cli/reference/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/config/environment/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/config/build/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/config/hatch/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/config/context/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/config/metadata/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/config/dependency/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/config/project-templates/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/config/hatch/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/meta/authors/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/config/metadata/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/meta/faq/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/config/project-templates/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/meta/history/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/config/environment/advanced/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/plugins/about/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/config/environment/overview/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/plugins/build-hook/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/how-to/environment/package-indices/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/plugins/builder/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/how-to/plugins/testing-builds/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/plugins/environment-collector/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/meta/authors/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/plugins/environment/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/meta/faq/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/plugins/metadata-hook/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/about/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/plugins/publisher/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/utilities/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/plugins/utilities/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/build-hook/custom/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/plugins/version-scheme/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/build-hook/reference/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ofek.dev/hatch/latest/dev/plugins/version-source/</loc>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/build-hook/version/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/builder/custom/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/builder/reference/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/builder/sdist/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/builder/wheel/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/environment/reference/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/environment/virtual/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/environment-collector/default/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/environment-collector/reference/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/metadata-hook/custom/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/metadata-hook/reference/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/publisher/package-index/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/publisher/reference/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/version-scheme/reference/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/version-scheme/standard/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/version-source/code/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/version-source/reference/</loc>
+         <lastmod>2020-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hatch.pypa.io/latest/dev/plugins/version-source/regex/</loc>
          <lastmod>2020-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
