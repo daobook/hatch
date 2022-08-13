@@ -1,10 +1,10 @@
-# Builds
+# 构建
 
 -----
 
-## Configuration
+## 配置
 
-Builds are [configured](config/build.md) using the `tool.hatch.build` table. Every [target](config/build.md#build-targets) is defined by a section within `tool.hatch.build.targets`, for example:
+构建使用 `tool.hatch.build` 表进行[配置](config/build.md)。每个 [target](config/build.md#build-targets) 都是由 `tool.hatch.build.targets` 部分定义的，例如：
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -32,9 +32,9 @@ Builds are [configured](config/build.md) using the `tool.hatch.build` table. Eve
     packages = ["src/foo"]
     ```
 
-## Building
+## 构建过程
 
-Invoking the [`build`](cli/reference.md#hatch-build) command without any arguments will build all defined targets, each in an isolated environment:
+调用不带任何参数的 [`build`](cli/reference.md#hatch-build) 命令将在隔离的环境中构建所有已定义的目标：
 
 ```console
 $ hatch build
@@ -47,7 +47,7 @@ Setting up build environment
 dist/hatch_demo-1rc0-py3-none-any.whl
 ```
 
-To only build specific targets, use the `-t`/`--target` option:
+要只构建特定的目标，使用 `-t`/`--target` 选项：
 
 ```console
 $ hatch build -t wheel
@@ -56,7 +56,7 @@ Setting up build environment
 dist/hatch_demo-1rc0-py3-none-any.whl
 ```
 
-If the target supports multiple [versions](config/build.md#versions), you can specify the exact versions to build by appending a colon followed by the desired versions separated by commas:
+如果目标支持多个[版本](config/build.md#versions)，您可以通过添加冒号和以逗号分隔的所需版本来指定要构建的确切版本：
 
 ```console
 $ hatch -v build -t wheel:standard
@@ -67,8 +67,9 @@ Building `wheel` version `standard`
 dist/hatch_demo-1rc0-py3-none-any.whl
 ```
 
-## Packaging ecosystem
+## 打包生态
 
-Hatch [complies](config/build.md#build-system) with modern Python packaging specs and therefore your projects can be used by other tools with Hatch serving as just the build backend.
+Hatch [遵循](config/build.md#build-system) 现代 Python 打包规范，因此你的项目可以被其他工具使用，而 Hatch 只是作为构建后端。
 
-So you could use [tox](https://github.com/tox-dev/tox) as an alternative to Hatch's [environment management](environment.md), or [cibuildwheel](https://github.com/pypa/cibuildwheel) to distribute packages for every platform, and they both will transparently use Hatch without any extra modification.
+因此，您可以使用 [tox](https://github.com/tox-dev/tox) 作为 Hatch [环境管理](environment.md) 的替代方案，或者使用 [cibuildwheel](https://github.com/pypa/cibuildwheel) 为每个平台分发包，它们都将透明地使用 Hatch，而无需任何额外的修改。
+
