@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - master
+    - xin
   pull_request:
     branches:
     - master
