@@ -1,20 +1,20 @@
-# Introduction
+# 简介
 
 -----
 
-## Setup
+## 配置
 
-Projects can be setup for use by Hatch using the [`new`](cli/reference.md#hatch-new) command.
+使用 Hatch  [`new`](cli/reference.md#hatch-new) 命令配置项目。
 
-### New project
+### 新项目
 
-Let's say you want to create a project named `Hatch Demo`. You would run:
+假设你想创建名为 `Hatch Demo` 的项目。可以：
 
 ```
 hatch new "Hatch Demo"
 ```
 
-This would create the following structure in your current working directory:
+这将在你的当前工作目录中创建以下结构：
 
 ```
 hatch-demo
@@ -29,29 +29,29 @@ hatch-demo
 ```
 
 !!! tip
-    There are many ways to [customize](config/project-templates.md) project generation.
+    有许多方法可以 [自定义](config/project-templates.md) 生成项目。
 
-### Existing project
+### 现有的项目
 
-To initialize an existing project, enter the directory containing the project and run the following:
+要初始化已存在的项目，进入包含该项目的目录，运行如下命令：
 
 ```
 hatch new --init
 ```
 
-If your project has a `setup.py` file the command will automatically migrate `setuptools` configuration for you. Otherwise, this will interactively guide you through the setup process.
+如果项目有 `setup.py` 文件，该命令会自动为你迁移 `setuptools` 配置。否则，这将交互式地指导您完成配置过程。
 
-## Project metadata
+## 项目元数据
 
-Next you'll want to define more of your project's [metadata](config/metadata.md) located in the `pyproject.toml` file. You can specify things like its [license](config/metadata.md#license), the [supported versions of Python](config/metadata.md#python-support), and [URLs](config/metadata.md#urls) referring to various parts of your project, like documentation.
+接下来，您将希望定义更多位于 `pyproject.toml` 文件中的项目[元数据](config/metadata.md) 。t您可以指定它的[许可](config/metadata.md#license)、[支持的 Python 版本](config/metadata.md#python-support) 以及引用项目各个部分的 [URL](config/metadata.md#urls)，比如文档。
 
-## Dependencies
+## 依赖关系
 
-The last step of the setup process is to define any [dependencies](config/dependency.md) that you'd like your project to begin with.
+配置过程的最后一步是定义 [依赖关系](config/dependency.md)，您希望在项目开始时使用它。
 
-## Configuration
+## 配置
 
-All project-specific configuration recognized by Hatch can be defined in either the `pyproject.toml` file, or a file named `hatch.toml` where options are not contained within the `tool.hatch` table:
+所有由 Hatch 识别的特定于项目的配置都在 `pyproject.toml` 文件，或选项不包含在 `tool.hatch` 表的名为 `hatch.toml` 的文件中：
 
 === ":octicons-file-code-16: pyproject.toml"
 
@@ -78,10 +78,10 @@ All project-specific configuration recognized by Hatch can be defined in either 
     option = "..."
     ```
 
-Top level keys in the latter file take precedence when defined in both.
+在两个文件中定义时，后一个文件中的顶级键优先。
 
 !!! tip
-    If you want to make your file more compact, you can use [dotted keys](https://toml.io/en/v1.0.0#table), turning the above example into:
+    如果你想让你的文件更紧凑，你可以使用 [dotted keys](https://toml.io/en/v1.0.0#table)，把上面的例子变成：
 
     === ":octicons-file-code-16: pyproject.toml"
 

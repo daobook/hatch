@@ -11,7 +11,7 @@ docs_dir: docs-zh
 site_dir: site
 theme:
   name: material
-  language: en
+  language: zh
   favicon: assets/images/favicon.ico
   icon:
     repo: fontawesome/brands/github-alt
